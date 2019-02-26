@@ -14,7 +14,7 @@ else
 fi
 
 set +e
-WARNINGS=$(trufflehog "$EXTRA_ARGS" . 2>&1)
+WARNINGS=$(trufflehog "$EXTRA_ARGS" --regex --entropy False . 2>&1)
 SUCCESS=$?
 echo "$WARNINGS"
 set -e
