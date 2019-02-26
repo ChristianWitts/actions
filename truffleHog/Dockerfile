@@ -11,8 +11,10 @@ LABEL "maintainer"="Christian Witts <cwitts@gmail.com>"
 
 WORKDIR /src
 
-RUN apk add --no-cache git \
+RUN apk add --no-cache git jq \
  && pip install truffleHog
 
-ENTRYPOINT ["trufflehog", "."]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
