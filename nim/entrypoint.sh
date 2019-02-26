@@ -6,7 +6,7 @@ cd "${NIM_ACTION_WORKING_DIR:-.}"
 COMMAND=${NIM_ACTION_COMMAND:-test}
 CHANNEL=${NIM_ACTION_CHANNEL:-stable}
 
-choosenim $CHANNEL
+choosenim "$CHANNEL"
 
 set +e
 WARNINGS=$(nimble "$COMMAND" 2>&1)
