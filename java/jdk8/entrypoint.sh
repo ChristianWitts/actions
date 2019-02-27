@@ -24,7 +24,6 @@ $WARNINGS
 "
 PAYLOAD=$(echo '{}' | jq --arg body "$COMMENT" '.body = $body')
 COMMENTS_URL=$(jq -r .pull_request.comments_url /github/workflow/event.json)
-cat /github/workflow/event.json
 curl -s -S -H "Authorization: token $GITHUB_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL" > /dev/null
 
 exit $SUCCESS
