@@ -19,7 +19,10 @@ if [ "$GRADLE_ACTION_COMMENT" = "1" ] || [ "$GRADLE_ACTION_COMMENT" = "false" ];
     exit $SUCCESS
 fi
 
+WARNINGS=$(echo "${WARNINGS}" | sed -n -e '/FAILURE/,/* Try/p' | sed -n -e '/* Try/!p')
+
 COMMENT="#### \`gradle\` Failed
+##### Task: $GRADLE_TASK
 $WARNINGS
 "
 PAYLOAD=$(echo '{}' | jq --arg body "$COMMENT" '.body = $body')
