@@ -5,10 +5,6 @@ cd "${JDK_ACTION_WORKING_DIR:-.}"
 
 GRADLE_TASK=${GRADLE_ACTION_TASK:-build}
 
-env
-ls -ltrah
-pwd
-
 set +e
 WARNINGS=$(./gradlew "${GRADLE_TASK}")
 SUCCESS=$?
