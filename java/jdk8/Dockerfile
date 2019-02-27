@@ -13,7 +13,7 @@ LABEL "maintainer"="Christian Witts <cwitts@gmail.com>"
 WORKDIR /src
 
 RUN apt-get update \
- && apt-get install jq curl
+ && apt-get install -y jq curl
 
 COPY entrypoint.sh /entrypoint.sh
 
