@@ -6,7 +6,7 @@ cd "${JDK_ACTION_WORKING_DIR:-.}"
 GRADLE_TASK=${GRADLE_ACTION_TASK:-build}
 
 set +e
-WARNINGS=$(gradle "${GRADLE_TASK}")
+WARNINGS=$(./gradlew "${GRADLE_TASK}")
 SUCCESS=$?
 echo "$WARNINGS"
 set -e
