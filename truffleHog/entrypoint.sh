@@ -13,6 +13,12 @@ else
     fi
 fi
 
+if [ ! -z "$TH_RULES" ]; then
+    EXTRA_ARGS="$EXTRA_ARGS --rules $TH_RULES"
+fi
+
+ls -lt
+
 set +e
 WARNINGS=$(trufflehog "$EXTRA_ARGS" --regex --entropy False . 2>&1)
 SUCCESS=$?
@@ -35,4 +41,3 @@ COMMENTS_URL=$(jq -r .pull_request.comments_url /github/workflow/event.json)
 curl -s -S -H "Authorization: token $GITHUB_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL" > /dev/null
 
 exit $SUCCESS
-
