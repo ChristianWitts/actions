@@ -9,7 +9,8 @@ LABEL "repository"="https://github.com/ChristianWitts/actions"
 LABEL "homepage"="https://github.com/ChristianWitts/actions/actions"
 LABEL "maintainer"="Christian Witts <cwitts@gmail.com>"
 
-RUN yum group install -y "Development Tools" python-devel \
+RUN yum group install -y "Development Tools" \
+ && yum install -y python-devel \
  && curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" \
  && python get-pip.py \
  && pip install molecule --prefer-binary
