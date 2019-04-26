@@ -15,5 +15,7 @@ RUN yum group install -y "Development Tools" \
  && python get-pip.py \
  && pip install molecule --prefer-binary
 
+COPY entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 
