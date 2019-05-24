@@ -6,7 +6,7 @@ FIRST_BRANCH_COMMIT=$(git rev-parse "$(git rev-parse --abbrev-ref HEAD)")
 echo "Running up to ${FIRST_BRANCH_COMMIT}"
 
 set +e
-WARNINGS=$(gitleaks --commit-stop="${FIRST_BRANCH_COMMIT}" --repo_path=. 2>&1)
+WARNINGS=$(gitleaks --commit-stop="${FIRST_BRANCH_COMMIT}" --repo-path=. 2>&1)
 SUCCESS=$?
 echo "$WARNINGS"
 set -e
