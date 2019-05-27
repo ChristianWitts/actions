@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+FILTER=${1-}
+TMPFILE=`mktemp`
+
+for line in $(git --no-pager diff --name-only FETCH_HEAD)
+do
+    if [[ $line == "${FILTER}"* ]];
+    then
+        dirname $line >> $TMPFILE
+    fi
+done
+
+WORKDIR+$(sort $TMPFILE | uniq -c | sort -r | head -1 | awk '{print $(NF)}')
+
+. source.sh
+
+if [ -z $WORKDIR ];
+then
+    echo "No changes found in the $FILTER location"
+    exit 78
+fi
+
+echo $WORKDIR >> source.sh
+. source.sh
+
