@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd "${ACTION_WORKING_DIRECTORY}"
-
+pwd
 set -e
 
 FILTER=${1-}
