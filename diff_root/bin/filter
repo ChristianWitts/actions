@@ -15,7 +15,7 @@ do
     fi
 done
 
-WORKDIR+$(sort $TMPFILE | uniq -c | sort -r | head -1 | awk '{print $(NF)}')
+WORKDIR=$(sort $TMPFILE | uniq -c | sort -r | head -1 | awk '{print $(NF)}')
 
 . source.sh
 
