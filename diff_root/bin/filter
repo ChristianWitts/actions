@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 cd "${ACTION_WORKING_DIRECTORY}"
 pwd
@@ -16,8 +16,6 @@ do
 done
 
 WORKDIR=$(sort $TMPFILE | uniq -c | sort -r | head -1 | awk '{print $(NF)}')
-
-. source.sh
 
 if [ -z $WORKDIR ];
 then
